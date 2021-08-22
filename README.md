@@ -1,23 +1,3 @@
-# SupContrast-Paddle
-```python
-pip install tensorboard_logger
-
-python main_supcon.py --batch_size 512 --learning_rate 0.5 --temp 0.1 --cosine
-
-python main_linear.py --batch_size 512 --learning_rate 5 --ckpt ./save/SupCon/cifar10_models/SupCon_cifar10_resnet50_lr_0.5_decay_0.0001_bsz_512_temp_0.1_trial_0_cosine_warm/last.pdparmas
-```
-
-论文所达到精度如下
-Results on CIFAR-10:
-|          |Arch | Setting | Loss | Accuracy(%) |
-|----------|:----:|:---:|:---:|:---:|
-|  SupCrossEntropy | ResNet50 | Supervised   | Cross Entropy |  95.0  |
-|  SupContrast     | ResNet50 | Supervised   | Contrastive   |  96.0  | 
-|  SimCLR          | ResNet50 | Unsupervised | Contrastive   |  93.6  |
-
-Paddle复现精度：95.94
-
-
 # SupContrast: Supervised Contrastive Learning
 <p align="center">
   <img src="figures/teaser.png" width="700">
@@ -52,26 +32,37 @@ loss = criterion(features)
 ```
 
 ## Comparison
+
+**You can use following command to get Paddle-Reduction-Acc on CIFAR-10**
+
+```python
+python main_supcon.py --batch_size 512 --learning_rate 0.5 --temp 0.1 --cosine
+
+python main_linear.py --batch_size 512 --learning_rate 5 --ckpt ./save/SupCon/cifar10_models/SupCon_cifar10_resnet50_lr_0.5_decay_0.0001_bsz_512_temp_0.1_trial_0_cosine_warm/last.pdparmas
+```
+
+You can get the Cifar10 model for [BaiduDrive](https://pan.baidu.com/s/1PvFU8QIEk8ISZrNM74okmg)(w8oc)
+
 Results on CIFAR-10:
-|          |Arch | Setting | Loss | Accuracy(%) |
-|----------|:----:|:---:|:---:|:---:|
-|  SupCrossEntropy | ResNet50 | Supervised   | Cross Entropy |  95.0  |
-|  SupContrast     | ResNet50 | Supervised   | Contrastive   |  96.0  | 
-|  SimCLR          | ResNet50 | Unsupervised | Contrastive   |  93.6  |
+|          |Arch | Setting | Loss | Accuracy(%) | re-Paddle-Acc(%) |
+|----------|:----:|:---:|:---:|:---:|:---:|
+|  SupCrossEntropy | ResNet50 | Supervised   | Cross Entropy |  95.0  | - |
+|  SupContrast     | ResNet50 | Supervised   | Contrastive   |  96.0  | 95.94 |
+|  SimCLR          | ResNet50 | Unsupervised | Contrastive   |  93.6  | - |
 
 Results on CIFAR-100:
-|          |Arch | Setting | Loss | Accuracy(%) |
-|----------|:----:|:---:|:---:|:---:|
-|  SupCrossEntropy | ResNet50 | Supervised   | Cross Entropy |  75.3 |
-|  SupContrast     | ResNet50 | Supervised   | Contrastive   |  76.5 | 
-|  SimCLR          | ResNet50 | Unsupervised | Contrastive   |  70.7 |
+|          |Arch | Setting | Loss | Accuracy(%) | re-Paddle-Acc(%) |
+|----------|:----:|:---:|:---:|:---:|:---:|
+|  SupCrossEntropy | ResNet50 | Supervised   | Cross Entropy |  75.3 | - |
+|  SupContrast     | ResNet50 | Supervised   | Contrastive   |  76.5 | - |
+|  SimCLR          | ResNet50 | Unsupervised | Contrastive   |  70.7 | - |
 
 Results on ImageNet (Stay tuned):
-|          |Arch | Setting | Loss | Accuracy(%) |
-|----------|:----:|:---:|:---:|:---:|
-|  SupCrossEntropy | ResNet50 | Supervised   | Cross Entropy |  -  |
-|  SupContrast     | ResNet50 | Supervised   | Contrastive   |  79.1 (MoCo trick)  | 
-|  SimCLR          | ResNet50 | Unsupervised | Contrastive   |  -  |
+|          |Arch | Setting | Loss | Accuracy(%) | re-Paddle-Acc(%) |
+|----------|:----:|:---:|:---:|:---:|:---:|
+|  SupCrossEntropy | ResNet50 | Supervised   | Cross Entropy |  -  | - |
+|  SupContrast     | ResNet50 | Supervised   | Contrastive   |  79.1 (MoCo trick)  | - |
+|  SimCLR          | ResNet50 | Unsupervised | Contrastive   |  -  | - |
 
 ## Running
 You might use `CUDA_VISIBLE_DEVICES` to set proper number of GPUs, and/or switch to CIFAR100 by `--dataset cifar100`.  
