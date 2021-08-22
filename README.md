@@ -43,6 +43,10 @@ python main_linear.py --batch_size 512 --learning_rate 5 --ckpt ./save/SupCon/ci
 
 You can get the Cifar10 model for [BaiduDrive](https://pan.baidu.com/s/1PvFU8QIEk8ISZrNM74okmg)(w8oc)
 
+**You can find log files in log dir, besides, I provide the visual log file, you can use visualDL to open it**
+![image](https://user-images.githubusercontent.com/49911294/130345177-ab1609ad-5d84-4c95-82ab-ed2b76b30529.png)
+
+
 Results on CIFAR-10:
 |          |Arch | Setting | Loss | Accuracy(%) | re-Paddle-Acc(%) |
 |----------|:----:|:---:|:---:|:---:|:---:|
